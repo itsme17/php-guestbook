@@ -3,28 +3,44 @@
   
 class PostLoader
 {
-    // function __construct() {}
-
     private $feedback = "feedback.json";
     private $title;
     private $date;
     private $content;
     private $authorName;
-    private $data=array();
+    // function __construct() {
+    
+    // }
     public function createAndAddToJson(){
 
        if(isset($_POST["btn"])) {
+        $this->storeData();
         if (file_exists($this->feedback)) {
-            $this->storeData();
-            array_push($this->data,$this->title,$this->date,$this->authorName,$this->content);
-            echo json_encode($this->data);
-            $json = json_encode($this->data);
-               file_put_contents($this->feedback, $json);
-
-        // echo $this->title;
-        // echo $this->date;
-        // echo $this->authorName;
-        // echo $this->content;
+            $data = json_decode(file_get_contents($this->feedback));
+            if(!empty($data)){
+            $y = array_reverse($data);
+            $z = array_slice($y, 0, 20);
+            foreach($z as $key=>$info) {
+                ?>
+                    <?php echo $key +1 . '. ' ?>
+                    <label>Title: <span><?php echo $info->title ?></span></label>
+                    <label>Date: <span><?php echo $info->date ?></span></label>
+                    <label>Author Name: <span><?php echo $info->authorName ?></span></label>
+                    <label>Content: <span><?php echo $info->content ?></span></label>
+                    <br>
+                <?php
+            }
+        }
+            $data[] = array( 
+                'title' => $this->title,
+                'date' => $this->date,
+                'authorName' => $this->authorName,
+                'content' => $this->content            
+            );    
+            
+            $json = json_encode($data);
+            file_put_contents($this->feedback, $json);
+               
         } else {
            $createfile = fopen($this->feedback, 'w');
             header("Refresh:0");
