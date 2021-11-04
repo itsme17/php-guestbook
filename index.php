@@ -15,7 +15,7 @@ $postLoader->createAndAddToJson();
     <title>Guest book</title>
 </head>
 <body>
-<form method="post">
+<form method="post" class="form">
         <label for="title">Title:</label></br>
         <input type="text" class="titlebox" name="title"></br>
         <label for="date">Date:</label></br>
@@ -35,5 +35,20 @@ $postLoader->createAndAddToJson();
     .contentbox{
         padding: 30px;
         margin-bottom:10px;
+    }
+    .form{
+        width:1000px;
+        display: grid;
+        justify-content: center;
+        border: 2px solid blue;
+        margin:20px auto;
+        padding:10px;
+    }
+    .messages{
+        display: grid;
+        justify-content: center;
+        border: 2px solid red;
+        margin:10px 100px;
+        padding:20px;
     }
 </style>
