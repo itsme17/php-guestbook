@@ -1,9 +1,6 @@
 <?php
 require 'PostLoader.php';
 $postLoader = new PostLoader();
-$postLoader->createAndAddToJson();
- 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +23,14 @@ $postLoader->createAndAddToJson();
         <input type="text" class="contentbox" name="content"></br>
         <button type="submit" class="btn" name="btn">submit</button>
     </form>
+<?php
+
+$postLoader->createAndAddToJson();
+
+?>
 
 </body>
+
 <style>
     body{
         
@@ -41,7 +44,7 @@ $postLoader->createAndAddToJson();
         display: grid;
         justify-content: center;
         border: 2px solid blue;
-        margin:20px auto;
+        margin:10px auto;
         padding:10px;
     }
     .messages{
@@ -52,3 +55,4 @@ $postLoader->createAndAddToJson();
         padding:20px;
     }
 </style>
+

@@ -15,6 +15,7 @@ class PostLoader
 
        if(isset($_POST["btn"])) {
         $this->storeData();
+       
         if (file_exists($this->feedback)) {
             $data = json_decode(file_get_contents($this->feedback));
             if(!empty($data)){
